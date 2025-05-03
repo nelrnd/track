@@ -9,15 +9,16 @@ export default function Calendar({ year }: { year: Year }) {
         <div key={index}>
           <h3 className="capitalize mb-4">{month.title}</h3>
           <div className="grid grid-cols-7 gap-3">
+            {[...Array(month.startsAt).keys()].map((filler) => (
+              <div key={filler}></div>
+            ))}
             {[...Array(month.daysCount).keys()]
               .map((day) => day + 1)
               .map((day, index) => (
                 <div
                   key={index}
-                  className="w-full aspect-square border border-gray-700 roudned"
-                >
-                  {day}
-                </div>
+                  className="w-full aspect-square border border-gray-700 rounded"
+                ></div>
               ))}
           </div>
         </div>
