@@ -22,6 +22,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  habits        Habit[]
+  tracks        Track[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -64,4 +66,22 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model Habit {
+  id        String   @id @default(cuid())
+  name      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tracks    Track[]
+  createdAt DateTime @default(now())
+}
+
+model Track {
+  id        String   @id @default(cuid())
+  habitId   String
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }

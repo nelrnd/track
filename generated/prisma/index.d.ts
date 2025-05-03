@@ -33,6 +33,16 @@ export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
  * 
  */
 export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTokenPayload>
+/**
+ * Model Habit
+ * 
+ */
+export type Habit = $Result.DefaultSelection<Prisma.$HabitPayload>
+/**
+ * Model Track
+ * 
+ */
+export type Track = $Result.DefaultSelection<Prisma.$TrackPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +208,26 @@ export class PrismaClient<
     * ```
     */
   get verificationToken(): Prisma.VerificationTokenDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.habit`: Exposes CRUD operations for the **Habit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Habits
+    * const habits = await prisma.habit.findMany()
+    * ```
+    */
+  get habit(): Prisma.HabitDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.track`: Exposes CRUD operations for the **Track** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tracks
+    * const tracks = await prisma.track.findMany()
+    * ```
+    */
+  get track(): Prisma.TrackDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +671,9 @@ export namespace Prisma {
     User: 'User',
     Account: 'Account',
     Session: 'Session',
-    VerificationToken: 'VerificationToken'
+    VerificationToken: 'VerificationToken',
+    Habit: 'Habit',
+    Track: 'Track'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "habit" | "track"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +992,154 @@ export namespace Prisma {
           }
         }
       }
+      Habit: {
+        payload: Prisma.$HabitPayload<ExtArgs>
+        fields: Prisma.HabitFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HabitFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HabitFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>
+          }
+          findFirst: {
+            args: Prisma.HabitFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HabitFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>
+          }
+          findMany: {
+            args: Prisma.HabitFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>[]
+          }
+          create: {
+            args: Prisma.HabitCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>
+          }
+          createMany: {
+            args: Prisma.HabitCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HabitCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>[]
+          }
+          delete: {
+            args: Prisma.HabitDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>
+          }
+          update: {
+            args: Prisma.HabitUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>
+          }
+          deleteMany: {
+            args: Prisma.HabitDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HabitUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HabitUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>[]
+          }
+          upsert: {
+            args: Prisma.HabitUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HabitPayload>
+          }
+          aggregate: {
+            args: Prisma.HabitAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHabit>
+          }
+          groupBy: {
+            args: Prisma.HabitGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HabitGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HabitCountArgs<ExtArgs>
+            result: $Utils.Optional<HabitCountAggregateOutputType> | number
+          }
+        }
+      }
+      Track: {
+        payload: Prisma.$TrackPayload<ExtArgs>
+        fields: Prisma.TrackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          findFirst: {
+            args: Prisma.TrackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          findMany: {
+            args: Prisma.TrackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>[]
+          }
+          create: {
+            args: Prisma.TrackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          createMany: {
+            args: Prisma.TrackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>[]
+          }
+          delete: {
+            args: Prisma.TrackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          update: {
+            args: Prisma.TrackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrackUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          aggregate: {
+            args: Prisma.TrackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrack>
+          }
+          groupBy: {
+            args: Prisma.TrackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrackCountArgs<ExtArgs>
+            result: $Utils.Optional<TrackCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1228,8 @@ export namespace Prisma {
     account?: AccountOmit
     session?: SessionOmit
     verificationToken?: VerificationTokenOmit
+    habit?: HabitOmit
+    track?: TrackOmit
   }
 
   /* Types for Logging */
@@ -1144,11 +1326,15 @@ export namespace Prisma {
   export type UserCountOutputType = {
     accounts: number
     sessions: number
+    habits: number
+    tracks: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    habits?: boolean | UserCountOutputTypeCountHabitsArgs
+    tracks?: boolean | UserCountOutputTypeCountTracksArgs
   }
 
   // Custom InputTypes
@@ -1174,6 +1360,51 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountHabitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HabitWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrackWhereInput
+  }
+
+
+  /**
+   * Count Type HabitCountOutputType
+   */
+
+  export type HabitCountOutputType = {
+    tracks: number
+  }
+
+  export type HabitCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tracks?: boolean | HabitCountOutputTypeCountTracksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * HabitCountOutputType without action
+   */
+  export type HabitCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitCountOutputType
+     */
+    select?: HabitCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * HabitCountOutputType without action
+   */
+  export type HabitCountOutputTypeCountTracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrackWhereInput
   }
 
 
@@ -1363,6 +1594,8 @@ export namespace Prisma {
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    habits?: boolean | User$habitsArgs<ExtArgs>
+    tracks?: boolean | User$tracksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1400,6 +1633,8 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    habits?: boolean | User$habitsArgs<ExtArgs>
+    tracks?: boolean | User$tracksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1410,6 +1645,8 @@ export namespace Prisma {
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
+      habits: Prisma.$HabitPayload<ExtArgs>[]
+      tracks: Prisma.$TrackPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1815,6 +2052,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    habits<T extends User$habitsArgs<ExtArgs> = {}>(args?: Subset<T, User$habitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tracks<T extends User$tracksArgs<ExtArgs> = {}>(args?: Subset<T, User$tracksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2284,6 +2523,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.habits
+   */
+  export type User$habitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    where?: HabitWhereInput
+    orderBy?: HabitOrderByWithRelationInput | HabitOrderByWithRelationInput[]
+    cursor?: HabitWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HabitScalarFieldEnum | HabitScalarFieldEnum[]
+  }
+
+  /**
+   * User.tracks
+   */
+  export type User$tracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    where?: TrackWhereInput
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    cursor?: TrackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
   }
 
   /**
@@ -5529,6 +5816,2134 @@ export namespace Prisma {
 
 
   /**
+   * Model Habit
+   */
+
+  export type AggregateHabit = {
+    _count: HabitCountAggregateOutputType | null
+    _min: HabitMinAggregateOutputType | null
+    _max: HabitMaxAggregateOutputType | null
+  }
+
+  export type HabitMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type HabitMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type HabitCountAggregateOutputType = {
+    id: number
+    name: number
+    userId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type HabitMinAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type HabitMaxAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type HabitCountAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type HabitAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Habit to aggregate.
+     */
+    where?: HabitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Habits to fetch.
+     */
+    orderBy?: HabitOrderByWithRelationInput | HabitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HabitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Habits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Habits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Habits
+    **/
+    _count?: true | HabitCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HabitMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HabitMaxAggregateInputType
+  }
+
+  export type GetHabitAggregateType<T extends HabitAggregateArgs> = {
+        [P in keyof T & keyof AggregateHabit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHabit[P]>
+      : GetScalarType<T[P], AggregateHabit[P]>
+  }
+
+
+
+
+  export type HabitGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HabitWhereInput
+    orderBy?: HabitOrderByWithAggregationInput | HabitOrderByWithAggregationInput[]
+    by: HabitScalarFieldEnum[] | HabitScalarFieldEnum
+    having?: HabitScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HabitCountAggregateInputType | true
+    _min?: HabitMinAggregateInputType
+    _max?: HabitMaxAggregateInputType
+  }
+
+  export type HabitGroupByOutputType = {
+    id: string
+    name: string
+    userId: string
+    createdAt: Date
+    _count: HabitCountAggregateOutputType | null
+    _min: HabitMinAggregateOutputType | null
+    _max: HabitMaxAggregateOutputType | null
+  }
+
+  type GetHabitGroupByPayload<T extends HabitGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HabitGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HabitGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HabitGroupByOutputType[P]>
+            : GetScalarType<T[P], HabitGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HabitSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    tracks?: boolean | Habit$tracksArgs<ExtArgs>
+    _count?: boolean | HabitCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["habit"]>
+
+  export type HabitSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["habit"]>
+
+  export type HabitSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["habit"]>
+
+  export type HabitSelectScalar = {
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+  }
+
+  export type HabitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "createdAt", ExtArgs["result"]["habit"]>
+  export type HabitInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    tracks?: boolean | Habit$tracksArgs<ExtArgs>
+    _count?: boolean | HabitCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type HabitIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type HabitIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $HabitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Habit"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      tracks: Prisma.$TrackPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      userId: string
+      createdAt: Date
+    }, ExtArgs["result"]["habit"]>
+    composites: {}
+  }
+
+  type HabitGetPayload<S extends boolean | null | undefined | HabitDefaultArgs> = $Result.GetResult<Prisma.$HabitPayload, S>
+
+  type HabitCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HabitFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HabitCountAggregateInputType | true
+    }
+
+  export interface HabitDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Habit'], meta: { name: 'Habit' } }
+    /**
+     * Find zero or one Habit that matches the filter.
+     * @param {HabitFindUniqueArgs} args - Arguments to find a Habit
+     * @example
+     * // Get one Habit
+     * const habit = await prisma.habit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HabitFindUniqueArgs>(args: SelectSubset<T, HabitFindUniqueArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Habit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HabitFindUniqueOrThrowArgs} args - Arguments to find a Habit
+     * @example
+     * // Get one Habit
+     * const habit = await prisma.habit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HabitFindUniqueOrThrowArgs>(args: SelectSubset<T, HabitFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Habit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitFindFirstArgs} args - Arguments to find a Habit
+     * @example
+     * // Get one Habit
+     * const habit = await prisma.habit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HabitFindFirstArgs>(args?: SelectSubset<T, HabitFindFirstArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Habit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitFindFirstOrThrowArgs} args - Arguments to find a Habit
+     * @example
+     * // Get one Habit
+     * const habit = await prisma.habit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HabitFindFirstOrThrowArgs>(args?: SelectSubset<T, HabitFindFirstOrThrowArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Habits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Habits
+     * const habits = await prisma.habit.findMany()
+     * 
+     * // Get first 10 Habits
+     * const habits = await prisma.habit.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const habitWithIdOnly = await prisma.habit.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HabitFindManyArgs>(args?: SelectSubset<T, HabitFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Habit.
+     * @param {HabitCreateArgs} args - Arguments to create a Habit.
+     * @example
+     * // Create one Habit
+     * const Habit = await prisma.habit.create({
+     *   data: {
+     *     // ... data to create a Habit
+     *   }
+     * })
+     * 
+     */
+    create<T extends HabitCreateArgs>(args: SelectSubset<T, HabitCreateArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Habits.
+     * @param {HabitCreateManyArgs} args - Arguments to create many Habits.
+     * @example
+     * // Create many Habits
+     * const habit = await prisma.habit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HabitCreateManyArgs>(args?: SelectSubset<T, HabitCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Habits and returns the data saved in the database.
+     * @param {HabitCreateManyAndReturnArgs} args - Arguments to create many Habits.
+     * @example
+     * // Create many Habits
+     * const habit = await prisma.habit.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Habits and only return the `id`
+     * const habitWithIdOnly = await prisma.habit.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HabitCreateManyAndReturnArgs>(args?: SelectSubset<T, HabitCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Habit.
+     * @param {HabitDeleteArgs} args - Arguments to delete one Habit.
+     * @example
+     * // Delete one Habit
+     * const Habit = await prisma.habit.delete({
+     *   where: {
+     *     // ... filter to delete one Habit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HabitDeleteArgs>(args: SelectSubset<T, HabitDeleteArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Habit.
+     * @param {HabitUpdateArgs} args - Arguments to update one Habit.
+     * @example
+     * // Update one Habit
+     * const habit = await prisma.habit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HabitUpdateArgs>(args: SelectSubset<T, HabitUpdateArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Habits.
+     * @param {HabitDeleteManyArgs} args - Arguments to filter Habits to delete.
+     * @example
+     * // Delete a few Habits
+     * const { count } = await prisma.habit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HabitDeleteManyArgs>(args?: SelectSubset<T, HabitDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Habits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Habits
+     * const habit = await prisma.habit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HabitUpdateManyArgs>(args: SelectSubset<T, HabitUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Habits and returns the data updated in the database.
+     * @param {HabitUpdateManyAndReturnArgs} args - Arguments to update many Habits.
+     * @example
+     * // Update many Habits
+     * const habit = await prisma.habit.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Habits and only return the `id`
+     * const habitWithIdOnly = await prisma.habit.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HabitUpdateManyAndReturnArgs>(args: SelectSubset<T, HabitUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Habit.
+     * @param {HabitUpsertArgs} args - Arguments to update or create a Habit.
+     * @example
+     * // Update or create a Habit
+     * const habit = await prisma.habit.upsert({
+     *   create: {
+     *     // ... data to create a Habit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Habit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HabitUpsertArgs>(args: SelectSubset<T, HabitUpsertArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Habits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitCountArgs} args - Arguments to filter Habits to count.
+     * @example
+     * // Count the number of Habits
+     * const count = await prisma.habit.count({
+     *   where: {
+     *     // ... the filter for the Habits we want to count
+     *   }
+     * })
+    **/
+    count<T extends HabitCountArgs>(
+      args?: Subset<T, HabitCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HabitCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Habit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HabitAggregateArgs>(args: Subset<T, HabitAggregateArgs>): Prisma.PrismaPromise<GetHabitAggregateType<T>>
+
+    /**
+     * Group by Habit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HabitGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HabitGroupByArgs['orderBy'] }
+        : { orderBy?: HabitGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HabitGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHabitGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Habit model
+   */
+  readonly fields: HabitFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Habit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HabitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tracks<T extends Habit$tracksArgs<ExtArgs> = {}>(args?: Subset<T, Habit$tracksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Habit model
+   */
+  interface HabitFieldRefs {
+    readonly id: FieldRef<"Habit", 'String'>
+    readonly name: FieldRef<"Habit", 'String'>
+    readonly userId: FieldRef<"Habit", 'String'>
+    readonly createdAt: FieldRef<"Habit", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Habit findUnique
+   */
+  export type HabitFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * Filter, which Habit to fetch.
+     */
+    where: HabitWhereUniqueInput
+  }
+
+  /**
+   * Habit findUniqueOrThrow
+   */
+  export type HabitFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * Filter, which Habit to fetch.
+     */
+    where: HabitWhereUniqueInput
+  }
+
+  /**
+   * Habit findFirst
+   */
+  export type HabitFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * Filter, which Habit to fetch.
+     */
+    where?: HabitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Habits to fetch.
+     */
+    orderBy?: HabitOrderByWithRelationInput | HabitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Habits.
+     */
+    cursor?: HabitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Habits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Habits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Habits.
+     */
+    distinct?: HabitScalarFieldEnum | HabitScalarFieldEnum[]
+  }
+
+  /**
+   * Habit findFirstOrThrow
+   */
+  export type HabitFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * Filter, which Habit to fetch.
+     */
+    where?: HabitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Habits to fetch.
+     */
+    orderBy?: HabitOrderByWithRelationInput | HabitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Habits.
+     */
+    cursor?: HabitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Habits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Habits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Habits.
+     */
+    distinct?: HabitScalarFieldEnum | HabitScalarFieldEnum[]
+  }
+
+  /**
+   * Habit findMany
+   */
+  export type HabitFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * Filter, which Habits to fetch.
+     */
+    where?: HabitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Habits to fetch.
+     */
+    orderBy?: HabitOrderByWithRelationInput | HabitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Habits.
+     */
+    cursor?: HabitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Habits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Habits.
+     */
+    skip?: number
+    distinct?: HabitScalarFieldEnum | HabitScalarFieldEnum[]
+  }
+
+  /**
+   * Habit create
+   */
+  export type HabitCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Habit.
+     */
+    data: XOR<HabitCreateInput, HabitUncheckedCreateInput>
+  }
+
+  /**
+   * Habit createMany
+   */
+  export type HabitCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Habits.
+     */
+    data: HabitCreateManyInput | HabitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Habit createManyAndReturn
+   */
+  export type HabitCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * The data used to create many Habits.
+     */
+    data: HabitCreateManyInput | HabitCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Habit update
+   */
+  export type HabitUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Habit.
+     */
+    data: XOR<HabitUpdateInput, HabitUncheckedUpdateInput>
+    /**
+     * Choose, which Habit to update.
+     */
+    where: HabitWhereUniqueInput
+  }
+
+  /**
+   * Habit updateMany
+   */
+  export type HabitUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Habits.
+     */
+    data: XOR<HabitUpdateManyMutationInput, HabitUncheckedUpdateManyInput>
+    /**
+     * Filter which Habits to update
+     */
+    where?: HabitWhereInput
+    /**
+     * Limit how many Habits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Habit updateManyAndReturn
+   */
+  export type HabitUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * The data used to update Habits.
+     */
+    data: XOR<HabitUpdateManyMutationInput, HabitUncheckedUpdateManyInput>
+    /**
+     * Filter which Habits to update
+     */
+    where?: HabitWhereInput
+    /**
+     * Limit how many Habits to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Habit upsert
+   */
+  export type HabitUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Habit to update in case it exists.
+     */
+    where: HabitWhereUniqueInput
+    /**
+     * In case the Habit found by the `where` argument doesn't exist, create a new Habit with this data.
+     */
+    create: XOR<HabitCreateInput, HabitUncheckedCreateInput>
+    /**
+     * In case the Habit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HabitUpdateInput, HabitUncheckedUpdateInput>
+  }
+
+  /**
+   * Habit delete
+   */
+  export type HabitDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+    /**
+     * Filter which Habit to delete.
+     */
+    where: HabitWhereUniqueInput
+  }
+
+  /**
+   * Habit deleteMany
+   */
+  export type HabitDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Habits to delete
+     */
+    where?: HabitWhereInput
+    /**
+     * Limit how many Habits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Habit.tracks
+   */
+  export type Habit$tracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    where?: TrackWhereInput
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    cursor?: TrackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Habit without action
+   */
+  export type HabitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Habit
+     */
+    select?: HabitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Habit
+     */
+    omit?: HabitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HabitInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Track
+   */
+
+  export type AggregateTrack = {
+    _count: TrackCountAggregateOutputType | null
+    _min: TrackMinAggregateOutputType | null
+    _max: TrackMaxAggregateOutputType | null
+  }
+
+  export type TrackMinAggregateOutputType = {
+    id: string | null
+    habitId: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type TrackMaxAggregateOutputType = {
+    id: string | null
+    habitId: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type TrackCountAggregateOutputType = {
+    id: number
+    habitId: number
+    userId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TrackMinAggregateInputType = {
+    id?: true
+    habitId?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type TrackMaxAggregateInputType = {
+    id?: true
+    habitId?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type TrackCountAggregateInputType = {
+    id?: true
+    habitId?: true
+    userId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TrackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Track to aggregate.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Tracks
+    **/
+    _count?: true | TrackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrackMaxAggregateInputType
+  }
+
+  export type GetTrackAggregateType<T extends TrackAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrack[P]>
+      : GetScalarType<T[P], AggregateTrack[P]>
+  }
+
+
+
+
+  export type TrackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrackWhereInput
+    orderBy?: TrackOrderByWithAggregationInput | TrackOrderByWithAggregationInput[]
+    by: TrackScalarFieldEnum[] | TrackScalarFieldEnum
+    having?: TrackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrackCountAggregateInputType | true
+    _min?: TrackMinAggregateInputType
+    _max?: TrackMaxAggregateInputType
+  }
+
+  export type TrackGroupByOutputType = {
+    id: string
+    habitId: string
+    userId: string
+    createdAt: Date
+    _count: TrackCountAggregateOutputType | null
+    _min: TrackMinAggregateOutputType | null
+    _max: TrackMaxAggregateOutputType | null
+  }
+
+  type GetTrackGroupByPayload<T extends TrackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrackGroupByOutputType[P]>
+            : GetScalarType<T[P], TrackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    habitId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    habit?: boolean | HabitDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track"]>
+
+  export type TrackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    habitId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    habit?: boolean | HabitDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track"]>
+
+  export type TrackSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    habitId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    habit?: boolean | HabitDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track"]>
+
+  export type TrackSelectScalar = {
+    id?: boolean
+    habitId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+  }
+
+  export type TrackOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "habitId" | "userId" | "createdAt", ExtArgs["result"]["track"]>
+  export type TrackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    habit?: boolean | HabitDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TrackIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    habit?: boolean | HabitDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TrackIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    habit?: boolean | HabitDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $TrackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Track"
+    objects: {
+      habit: Prisma.$HabitPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      habitId: string
+      userId: string
+      createdAt: Date
+    }, ExtArgs["result"]["track"]>
+    composites: {}
+  }
+
+  type TrackGetPayload<S extends boolean | null | undefined | TrackDefaultArgs> = $Result.GetResult<Prisma.$TrackPayload, S>
+
+  type TrackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrackFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrackCountAggregateInputType | true
+    }
+
+  export interface TrackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Track'], meta: { name: 'Track' } }
+    /**
+     * Find zero or one Track that matches the filter.
+     * @param {TrackFindUniqueArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrackFindUniqueArgs>(args: SelectSubset<T, TrackFindUniqueArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Track that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrackFindUniqueOrThrowArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrackFindUniqueOrThrowArgs>(args: SelectSubset<T, TrackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Track that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackFindFirstArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrackFindFirstArgs>(args?: SelectSubset<T, TrackFindFirstArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Track that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackFindFirstOrThrowArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrackFindFirstOrThrowArgs>(args?: SelectSubset<T, TrackFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tracks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tracks
+     * const tracks = await prisma.track.findMany()
+     * 
+     * // Get first 10 Tracks
+     * const tracks = await prisma.track.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trackWithIdOnly = await prisma.track.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrackFindManyArgs>(args?: SelectSubset<T, TrackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Track.
+     * @param {TrackCreateArgs} args - Arguments to create a Track.
+     * @example
+     * // Create one Track
+     * const Track = await prisma.track.create({
+     *   data: {
+     *     // ... data to create a Track
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrackCreateArgs>(args: SelectSubset<T, TrackCreateArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tracks.
+     * @param {TrackCreateManyArgs} args - Arguments to create many Tracks.
+     * @example
+     * // Create many Tracks
+     * const track = await prisma.track.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrackCreateManyArgs>(args?: SelectSubset<T, TrackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tracks and returns the data saved in the database.
+     * @param {TrackCreateManyAndReturnArgs} args - Arguments to create many Tracks.
+     * @example
+     * // Create many Tracks
+     * const track = await prisma.track.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tracks and only return the `id`
+     * const trackWithIdOnly = await prisma.track.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrackCreateManyAndReturnArgs>(args?: SelectSubset<T, TrackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Track.
+     * @param {TrackDeleteArgs} args - Arguments to delete one Track.
+     * @example
+     * // Delete one Track
+     * const Track = await prisma.track.delete({
+     *   where: {
+     *     // ... filter to delete one Track
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrackDeleteArgs>(args: SelectSubset<T, TrackDeleteArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Track.
+     * @param {TrackUpdateArgs} args - Arguments to update one Track.
+     * @example
+     * // Update one Track
+     * const track = await prisma.track.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrackUpdateArgs>(args: SelectSubset<T, TrackUpdateArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tracks.
+     * @param {TrackDeleteManyArgs} args - Arguments to filter Tracks to delete.
+     * @example
+     * // Delete a few Tracks
+     * const { count } = await prisma.track.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrackDeleteManyArgs>(args?: SelectSubset<T, TrackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tracks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tracks
+     * const track = await prisma.track.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrackUpdateManyArgs>(args: SelectSubset<T, TrackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tracks and returns the data updated in the database.
+     * @param {TrackUpdateManyAndReturnArgs} args - Arguments to update many Tracks.
+     * @example
+     * // Update many Tracks
+     * const track = await prisma.track.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tracks and only return the `id`
+     * const trackWithIdOnly = await prisma.track.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrackUpdateManyAndReturnArgs>(args: SelectSubset<T, TrackUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Track.
+     * @param {TrackUpsertArgs} args - Arguments to update or create a Track.
+     * @example
+     * // Update or create a Track
+     * const track = await prisma.track.upsert({
+     *   create: {
+     *     // ... data to create a Track
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Track we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrackUpsertArgs>(args: SelectSubset<T, TrackUpsertArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tracks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackCountArgs} args - Arguments to filter Tracks to count.
+     * @example
+     * // Count the number of Tracks
+     * const count = await prisma.track.count({
+     *   where: {
+     *     // ... the filter for the Tracks we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrackCountArgs>(
+      args?: Subset<T, TrackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Track.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrackAggregateArgs>(args: Subset<T, TrackAggregateArgs>): Prisma.PrismaPromise<GetTrackAggregateType<T>>
+
+    /**
+     * Group by Track.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrackGroupByArgs['orderBy'] }
+        : { orderBy?: TrackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Track model
+   */
+  readonly fields: TrackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Track.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    habit<T extends HabitDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HabitDefaultArgs<ExtArgs>>): Prisma__HabitClient<$Result.GetResult<Prisma.$HabitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Track model
+   */
+  interface TrackFieldRefs {
+    readonly id: FieldRef<"Track", 'String'>
+    readonly habitId: FieldRef<"Track", 'String'>
+    readonly userId: FieldRef<"Track", 'String'>
+    readonly createdAt: FieldRef<"Track", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Track findUnique
+   */
+  export type TrackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track findUniqueOrThrow
+   */
+  export type TrackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track findFirst
+   */
+  export type TrackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tracks.
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tracks.
+     */
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Track findFirstOrThrow
+   */
+  export type TrackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tracks.
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tracks.
+     */
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Track findMany
+   */
+  export type TrackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Tracks to fetch.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Tracks.
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Track create
+   */
+  export type TrackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Track.
+     */
+    data: XOR<TrackCreateInput, TrackUncheckedCreateInput>
+  }
+
+  /**
+   * Track createMany
+   */
+  export type TrackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Tracks.
+     */
+    data: TrackCreateManyInput | TrackCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Track createManyAndReturn
+   */
+  export type TrackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * The data used to create many Tracks.
+     */
+    data: TrackCreateManyInput | TrackCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Track update
+   */
+  export type TrackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Track.
+     */
+    data: XOR<TrackUpdateInput, TrackUncheckedUpdateInput>
+    /**
+     * Choose, which Track to update.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track updateMany
+   */
+  export type TrackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Tracks.
+     */
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyInput>
+    /**
+     * Filter which Tracks to update
+     */
+    where?: TrackWhereInput
+    /**
+     * Limit how many Tracks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Track updateManyAndReturn
+   */
+  export type TrackUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * The data used to update Tracks.
+     */
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyInput>
+    /**
+     * Filter which Tracks to update
+     */
+    where?: TrackWhereInput
+    /**
+     * Limit how many Tracks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Track upsert
+   */
+  export type TrackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Track to update in case it exists.
+     */
+    where: TrackWhereUniqueInput
+    /**
+     * In case the Track found by the `where` argument doesn't exist, create a new Track with this data.
+     */
+    create: XOR<TrackCreateInput, TrackUncheckedCreateInput>
+    /**
+     * In case the Track was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrackUpdateInput, TrackUncheckedUpdateInput>
+  }
+
+  /**
+   * Track delete
+   */
+  export type TrackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter which Track to delete.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track deleteMany
+   */
+  export type TrackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tracks to delete
+     */
+    where?: TrackWhereInput
+    /**
+     * Limit how many Tracks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Track without action
+   */
+  export type TrackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5592,6 +8007,26 @@ export namespace Prisma {
   };
 
   export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+  export const HabitScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    userId: 'userId',
+    createdAt: 'createdAt'
+  };
+
+  export type HabitScalarFieldEnum = (typeof HabitScalarFieldEnum)[keyof typeof HabitScalarFieldEnum]
+
+
+  export const TrackScalarFieldEnum: {
+    id: 'id',
+    habitId: 'habitId',
+    userId: 'userId',
+    createdAt: 'createdAt'
+  };
+
+  export type TrackScalarFieldEnum = (typeof TrackScalarFieldEnum)[keyof typeof TrackScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5695,6 +8130,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    habits?: HabitListRelationFilter
+    tracks?: TrackListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5707,6 +8144,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
+    habits?: HabitOrderByRelationAggregateInput
+    tracks?: TrackOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5722,6 +8161,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    habits?: HabitListRelationFilter
+    tracks?: TrackListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -5946,6 +8387,112 @@ export namespace Prisma {
     expires?: DateTimeWithAggregatesFilter<"VerificationToken"> | Date | string
   }
 
+  export type HabitWhereInput = {
+    AND?: HabitWhereInput | HabitWhereInput[]
+    OR?: HabitWhereInput[]
+    NOT?: HabitWhereInput | HabitWhereInput[]
+    id?: StringFilter<"Habit"> | string
+    name?: StringFilter<"Habit"> | string
+    userId?: StringFilter<"Habit"> | string
+    createdAt?: DateTimeFilter<"Habit"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    tracks?: TrackListRelationFilter
+  }
+
+  export type HabitOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    tracks?: TrackOrderByRelationAggregateInput
+  }
+
+  export type HabitWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HabitWhereInput | HabitWhereInput[]
+    OR?: HabitWhereInput[]
+    NOT?: HabitWhereInput | HabitWhereInput[]
+    name?: StringFilter<"Habit"> | string
+    userId?: StringFilter<"Habit"> | string
+    createdAt?: DateTimeFilter<"Habit"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    tracks?: TrackListRelationFilter
+  }, "id">
+
+  export type HabitOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    _count?: HabitCountOrderByAggregateInput
+    _max?: HabitMaxOrderByAggregateInput
+    _min?: HabitMinOrderByAggregateInput
+  }
+
+  export type HabitScalarWhereWithAggregatesInput = {
+    AND?: HabitScalarWhereWithAggregatesInput | HabitScalarWhereWithAggregatesInput[]
+    OR?: HabitScalarWhereWithAggregatesInput[]
+    NOT?: HabitScalarWhereWithAggregatesInput | HabitScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Habit"> | string
+    name?: StringWithAggregatesFilter<"Habit"> | string
+    userId?: StringWithAggregatesFilter<"Habit"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Habit"> | Date | string
+  }
+
+  export type TrackWhereInput = {
+    AND?: TrackWhereInput | TrackWhereInput[]
+    OR?: TrackWhereInput[]
+    NOT?: TrackWhereInput | TrackWhereInput[]
+    id?: StringFilter<"Track"> | string
+    habitId?: StringFilter<"Track"> | string
+    userId?: StringFilter<"Track"> | string
+    createdAt?: DateTimeFilter<"Track"> | Date | string
+    habit?: XOR<HabitScalarRelationFilter, HabitWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type TrackOrderByWithRelationInput = {
+    id?: SortOrder
+    habitId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    habit?: HabitOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type TrackWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TrackWhereInput | TrackWhereInput[]
+    OR?: TrackWhereInput[]
+    NOT?: TrackWhereInput | TrackWhereInput[]
+    habitId?: StringFilter<"Track"> | string
+    userId?: StringFilter<"Track"> | string
+    createdAt?: DateTimeFilter<"Track"> | Date | string
+    habit?: XOR<HabitScalarRelationFilter, HabitWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type TrackOrderByWithAggregationInput = {
+    id?: SortOrder
+    habitId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    _count?: TrackCountOrderByAggregateInput
+    _max?: TrackMaxOrderByAggregateInput
+    _min?: TrackMinOrderByAggregateInput
+  }
+
+  export type TrackScalarWhereWithAggregatesInput = {
+    AND?: TrackScalarWhereWithAggregatesInput | TrackScalarWhereWithAggregatesInput[]
+    OR?: TrackScalarWhereWithAggregatesInput[]
+    NOT?: TrackScalarWhereWithAggregatesInput | TrackScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Track"> | string
+    habitId?: StringWithAggregatesFilter<"Track"> | string
+    userId?: StringWithAggregatesFilter<"Track"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Track"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -5956,6 +8503,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    habits?: HabitCreateNestedManyWithoutUserInput
+    tracks?: TrackCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -5968,6 +8517,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    habits?: HabitUncheckedCreateNestedManyWithoutUserInput
+    tracks?: TrackUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -5980,6 +8531,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    habits?: HabitUpdateManyWithoutUserNestedInput
+    tracks?: TrackUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -5992,6 +8545,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    habits?: HabitUncheckedUpdateManyWithoutUserNestedInput
+    tracks?: TrackUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6232,6 +8787,105 @@ export namespace Prisma {
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type HabitCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutHabitsInput
+    tracks?: TrackCreateNestedManyWithoutHabitInput
+  }
+
+  export type HabitUncheckedCreateInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+    tracks?: TrackUncheckedCreateNestedManyWithoutHabitInput
+  }
+
+  export type HabitUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutHabitsNestedInput
+    tracks?: TrackUpdateManyWithoutHabitNestedInput
+  }
+
+  export type HabitUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tracks?: TrackUncheckedUpdateManyWithoutHabitNestedInput
+  }
+
+  export type HabitCreateManyInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type HabitUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HabitUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    habit: HabitCreateNestedOneWithoutTracksInput
+    user: UserCreateNestedOneWithoutTracksInput
+  }
+
+  export type TrackUncheckedCreateInput = {
+    id?: string
+    habitId: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type TrackUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    habit?: HabitUpdateOneRequiredWithoutTracksNestedInput
+    user?: UserUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type TrackUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    habitId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackCreateManyInput = {
+    id?: string
+    habitId: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type TrackUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    habitId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6296,6 +8950,18 @@ export namespace Prisma {
     none?: SessionWhereInput
   }
 
+  export type HabitListRelationFilter = {
+    every?: HabitWhereInput
+    some?: HabitWhereInput
+    none?: HabitWhereInput
+  }
+
+  export type TrackListRelationFilter = {
+    every?: TrackWhereInput
+    some?: TrackWhereInput
+    none?: TrackWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6306,6 +8972,14 @@ export namespace Prisma {
   }
 
   export type SessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HabitOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TrackOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6543,6 +9217,53 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type HabitCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type HabitMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type HabitMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type HabitScalarRelationFilter = {
+    is?: HabitWhereInput
+    isNot?: HabitWhereInput
+  }
+
+  export type TrackCountOrderByAggregateInput = {
+    id?: SortOrder
+    habitId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TrackMaxOrderByAggregateInput = {
+    id?: SortOrder
+    habitId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TrackMinOrderByAggregateInput = {
+    id?: SortOrder
+    habitId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6557,6 +9278,20 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
+  export type HabitCreateNestedManyWithoutUserInput = {
+    create?: XOR<HabitCreateWithoutUserInput, HabitUncheckedCreateWithoutUserInput> | HabitCreateWithoutUserInput[] | HabitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HabitCreateOrConnectWithoutUserInput | HabitCreateOrConnectWithoutUserInput[]
+    createMany?: HabitCreateManyUserInputEnvelope
+    connect?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+  }
+
+  export type TrackCreateNestedManyWithoutUserInput = {
+    create?: XOR<TrackCreateWithoutUserInput, TrackUncheckedCreateWithoutUserInput> | TrackCreateWithoutUserInput[] | TrackUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutUserInput | TrackCreateOrConnectWithoutUserInput[]
+    createMany?: TrackCreateManyUserInputEnvelope
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6569,6 +9304,20 @@ export namespace Prisma {
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  }
+
+  export type HabitUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<HabitCreateWithoutUserInput, HabitUncheckedCreateWithoutUserInput> | HabitCreateWithoutUserInput[] | HabitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HabitCreateOrConnectWithoutUserInput | HabitCreateOrConnectWithoutUserInput[]
+    createMany?: HabitCreateManyUserInputEnvelope
+    connect?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+  }
+
+  export type TrackUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TrackCreateWithoutUserInput, TrackUncheckedCreateWithoutUserInput> | TrackCreateWithoutUserInput[] | TrackUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutUserInput | TrackCreateOrConnectWithoutUserInput[]
+    createMany?: TrackCreateManyUserInputEnvelope
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6615,6 +9364,34 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
+  export type HabitUpdateManyWithoutUserNestedInput = {
+    create?: XOR<HabitCreateWithoutUserInput, HabitUncheckedCreateWithoutUserInput> | HabitCreateWithoutUserInput[] | HabitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HabitCreateOrConnectWithoutUserInput | HabitCreateOrConnectWithoutUserInput[]
+    upsert?: HabitUpsertWithWhereUniqueWithoutUserInput | HabitUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: HabitCreateManyUserInputEnvelope
+    set?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    disconnect?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    delete?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    connect?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    update?: HabitUpdateWithWhereUniqueWithoutUserInput | HabitUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: HabitUpdateManyWithWhereWithoutUserInput | HabitUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: HabitScalarWhereInput | HabitScalarWhereInput[]
+  }
+
+  export type TrackUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TrackCreateWithoutUserInput, TrackUncheckedCreateWithoutUserInput> | TrackCreateWithoutUserInput[] | TrackUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutUserInput | TrackCreateOrConnectWithoutUserInput[]
+    upsert?: TrackUpsertWithWhereUniqueWithoutUserInput | TrackUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TrackCreateManyUserInputEnvelope
+    set?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    disconnect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    delete?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    update?: TrackUpdateWithWhereUniqueWithoutUserInput | TrackUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TrackUpdateManyWithWhereWithoutUserInput | TrackUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TrackScalarWhereInput | TrackScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6641,6 +9418,34 @@ export namespace Prisma {
     update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  }
+
+  export type HabitUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<HabitCreateWithoutUserInput, HabitUncheckedCreateWithoutUserInput> | HabitCreateWithoutUserInput[] | HabitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: HabitCreateOrConnectWithoutUserInput | HabitCreateOrConnectWithoutUserInput[]
+    upsert?: HabitUpsertWithWhereUniqueWithoutUserInput | HabitUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: HabitCreateManyUserInputEnvelope
+    set?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    disconnect?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    delete?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    connect?: HabitWhereUniqueInput | HabitWhereUniqueInput[]
+    update?: HabitUpdateWithWhereUniqueWithoutUserInput | HabitUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: HabitUpdateManyWithWhereWithoutUserInput | HabitUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: HabitScalarWhereInput | HabitScalarWhereInput[]
+  }
+
+  export type TrackUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TrackCreateWithoutUserInput, TrackUncheckedCreateWithoutUserInput> | TrackCreateWithoutUserInput[] | TrackUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutUserInput | TrackCreateOrConnectWithoutUserInput[]
+    upsert?: TrackUpsertWithWhereUniqueWithoutUserInput | TrackUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TrackCreateManyUserInputEnvelope
+    set?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    disconnect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    delete?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    update?: TrackUpdateWithWhereUniqueWithoutUserInput | TrackUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TrackUpdateManyWithWhereWithoutUserInput | TrackUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TrackScalarWhereInput | TrackScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -6677,6 +9482,90 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutSessionsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutHabitsInput = {
+    create?: XOR<UserCreateWithoutHabitsInput, UserUncheckedCreateWithoutHabitsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHabitsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type TrackCreateNestedManyWithoutHabitInput = {
+    create?: XOR<TrackCreateWithoutHabitInput, TrackUncheckedCreateWithoutHabitInput> | TrackCreateWithoutHabitInput[] | TrackUncheckedCreateWithoutHabitInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutHabitInput | TrackCreateOrConnectWithoutHabitInput[]
+    createMany?: TrackCreateManyHabitInputEnvelope
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+  }
+
+  export type TrackUncheckedCreateNestedManyWithoutHabitInput = {
+    create?: XOR<TrackCreateWithoutHabitInput, TrackUncheckedCreateWithoutHabitInput> | TrackCreateWithoutHabitInput[] | TrackUncheckedCreateWithoutHabitInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutHabitInput | TrackCreateOrConnectWithoutHabitInput[]
+    createMany?: TrackCreateManyHabitInputEnvelope
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutHabitsNestedInput = {
+    create?: XOR<UserCreateWithoutHabitsInput, UserUncheckedCreateWithoutHabitsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHabitsInput
+    upsert?: UserUpsertWithoutHabitsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutHabitsInput, UserUpdateWithoutHabitsInput>, UserUncheckedUpdateWithoutHabitsInput>
+  }
+
+  export type TrackUpdateManyWithoutHabitNestedInput = {
+    create?: XOR<TrackCreateWithoutHabitInput, TrackUncheckedCreateWithoutHabitInput> | TrackCreateWithoutHabitInput[] | TrackUncheckedCreateWithoutHabitInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutHabitInput | TrackCreateOrConnectWithoutHabitInput[]
+    upsert?: TrackUpsertWithWhereUniqueWithoutHabitInput | TrackUpsertWithWhereUniqueWithoutHabitInput[]
+    createMany?: TrackCreateManyHabitInputEnvelope
+    set?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    disconnect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    delete?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    update?: TrackUpdateWithWhereUniqueWithoutHabitInput | TrackUpdateWithWhereUniqueWithoutHabitInput[]
+    updateMany?: TrackUpdateManyWithWhereWithoutHabitInput | TrackUpdateManyWithWhereWithoutHabitInput[]
+    deleteMany?: TrackScalarWhereInput | TrackScalarWhereInput[]
+  }
+
+  export type TrackUncheckedUpdateManyWithoutHabitNestedInput = {
+    create?: XOR<TrackCreateWithoutHabitInput, TrackUncheckedCreateWithoutHabitInput> | TrackCreateWithoutHabitInput[] | TrackUncheckedCreateWithoutHabitInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutHabitInput | TrackCreateOrConnectWithoutHabitInput[]
+    upsert?: TrackUpsertWithWhereUniqueWithoutHabitInput | TrackUpsertWithWhereUniqueWithoutHabitInput[]
+    createMany?: TrackCreateManyHabitInputEnvelope
+    set?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    disconnect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    delete?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    update?: TrackUpdateWithWhereUniqueWithoutHabitInput | TrackUpdateWithWhereUniqueWithoutHabitInput[]
+    updateMany?: TrackUpdateManyWithWhereWithoutHabitInput | TrackUpdateManyWithWhereWithoutHabitInput[]
+    deleteMany?: TrackScalarWhereInput | TrackScalarWhereInput[]
+  }
+
+  export type HabitCreateNestedOneWithoutTracksInput = {
+    create?: XOR<HabitCreateWithoutTracksInput, HabitUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: HabitCreateOrConnectWithoutTracksInput
+    connect?: HabitWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutTracksInput = {
+    create?: XOR<UserCreateWithoutTracksInput, UserUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTracksInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type HabitUpdateOneRequiredWithoutTracksNestedInput = {
+    create?: XOR<HabitCreateWithoutTracksInput, HabitUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: HabitCreateOrConnectWithoutTracksInput
+    upsert?: HabitUpsertWithoutTracksInput
+    connect?: HabitWhereUniqueInput
+    update?: XOR<XOR<HabitUpdateToOneWithWhereWithoutTracksInput, HabitUpdateWithoutTracksInput>, HabitUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutTracksNestedInput = {
+    create?: XOR<UserCreateWithoutTracksInput, UserUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTracksInput
+    upsert?: UserUpsertWithoutTracksInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTracksInput, UserUpdateWithoutTracksInput>, UserUncheckedUpdateWithoutTracksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6904,6 +9793,52 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type HabitCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    tracks?: TrackCreateNestedManyWithoutHabitInput
+  }
+
+  export type HabitUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    tracks?: TrackUncheckedCreateNestedManyWithoutHabitInput
+  }
+
+  export type HabitCreateOrConnectWithoutUserInput = {
+    where: HabitWhereUniqueInput
+    create: XOR<HabitCreateWithoutUserInput, HabitUncheckedCreateWithoutUserInput>
+  }
+
+  export type HabitCreateManyUserInputEnvelope = {
+    data: HabitCreateManyUserInput | HabitCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrackCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    habit: HabitCreateNestedOneWithoutTracksInput
+  }
+
+  export type TrackUncheckedCreateWithoutUserInput = {
+    id?: string
+    habitId: string
+    createdAt?: Date | string
+  }
+
+  export type TrackCreateOrConnectWithoutUserInput = {
+    where: TrackWhereUniqueInput
+    create: XOR<TrackCreateWithoutUserInput, TrackUncheckedCreateWithoutUserInput>
+  }
+
+  export type TrackCreateManyUserInputEnvelope = {
+    data: TrackCreateManyUserInput | TrackCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -6966,6 +9901,58 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Session"> | Date | string
   }
 
+  export type HabitUpsertWithWhereUniqueWithoutUserInput = {
+    where: HabitWhereUniqueInput
+    update: XOR<HabitUpdateWithoutUserInput, HabitUncheckedUpdateWithoutUserInput>
+    create: XOR<HabitCreateWithoutUserInput, HabitUncheckedCreateWithoutUserInput>
+  }
+
+  export type HabitUpdateWithWhereUniqueWithoutUserInput = {
+    where: HabitWhereUniqueInput
+    data: XOR<HabitUpdateWithoutUserInput, HabitUncheckedUpdateWithoutUserInput>
+  }
+
+  export type HabitUpdateManyWithWhereWithoutUserInput = {
+    where: HabitScalarWhereInput
+    data: XOR<HabitUpdateManyMutationInput, HabitUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type HabitScalarWhereInput = {
+    AND?: HabitScalarWhereInput | HabitScalarWhereInput[]
+    OR?: HabitScalarWhereInput[]
+    NOT?: HabitScalarWhereInput | HabitScalarWhereInput[]
+    id?: StringFilter<"Habit"> | string
+    name?: StringFilter<"Habit"> | string
+    userId?: StringFilter<"Habit"> | string
+    createdAt?: DateTimeFilter<"Habit"> | Date | string
+  }
+
+  export type TrackUpsertWithWhereUniqueWithoutUserInput = {
+    where: TrackWhereUniqueInput
+    update: XOR<TrackUpdateWithoutUserInput, TrackUncheckedUpdateWithoutUserInput>
+    create: XOR<TrackCreateWithoutUserInput, TrackUncheckedCreateWithoutUserInput>
+  }
+
+  export type TrackUpdateWithWhereUniqueWithoutUserInput = {
+    where: TrackWhereUniqueInput
+    data: XOR<TrackUpdateWithoutUserInput, TrackUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TrackUpdateManyWithWhereWithoutUserInput = {
+    where: TrackScalarWhereInput
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type TrackScalarWhereInput = {
+    AND?: TrackScalarWhereInput | TrackScalarWhereInput[]
+    OR?: TrackScalarWhereInput[]
+    NOT?: TrackScalarWhereInput | TrackScalarWhereInput[]
+    id?: StringFilter<"Track"> | string
+    habitId?: StringFilter<"Track"> | string
+    userId?: StringFilter<"Track"> | string
+    createdAt?: DateTimeFilter<"Track"> | Date | string
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
@@ -6975,6 +9962,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
+    habits?: HabitCreateNestedManyWithoutUserInput
+    tracks?: TrackCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -6986,6 +9975,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    habits?: HabitUncheckedCreateNestedManyWithoutUserInput
+    tracks?: TrackUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -7013,6 +10004,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    habits?: HabitUpdateManyWithoutUserNestedInput
+    tracks?: TrackUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -7024,6 +10017,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    habits?: HabitUncheckedUpdateManyWithoutUserNestedInput
+    tracks?: TrackUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -7035,6 +10030,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
+    habits?: HabitCreateNestedManyWithoutUserInput
+    tracks?: TrackCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -7046,6 +10043,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    habits?: HabitUncheckedCreateNestedManyWithoutUserInput
+    tracks?: TrackUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -7073,6 +10072,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    habits?: HabitUpdateManyWithoutUserNestedInput
+    tracks?: TrackUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -7084,6 +10085,226 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    habits?: HabitUncheckedUpdateManyWithoutUserNestedInput
+    tracks?: TrackUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutHabitsInput = {
+    id?: string
+    name?: string | null
+    email: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    tracks?: TrackCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutHabitsInput = {
+    id?: string
+    name?: string | null
+    email: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    tracks?: TrackUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutHabitsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutHabitsInput, UserUncheckedCreateWithoutHabitsInput>
+  }
+
+  export type TrackCreateWithoutHabitInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutTracksInput
+  }
+
+  export type TrackUncheckedCreateWithoutHabitInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type TrackCreateOrConnectWithoutHabitInput = {
+    where: TrackWhereUniqueInput
+    create: XOR<TrackCreateWithoutHabitInput, TrackUncheckedCreateWithoutHabitInput>
+  }
+
+  export type TrackCreateManyHabitInputEnvelope = {
+    data: TrackCreateManyHabitInput | TrackCreateManyHabitInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutHabitsInput = {
+    update: XOR<UserUpdateWithoutHabitsInput, UserUncheckedUpdateWithoutHabitsInput>
+    create: XOR<UserCreateWithoutHabitsInput, UserUncheckedCreateWithoutHabitsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutHabitsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutHabitsInput, UserUncheckedUpdateWithoutHabitsInput>
+  }
+
+  export type UserUpdateWithoutHabitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    tracks?: TrackUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutHabitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    tracks?: TrackUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type TrackUpsertWithWhereUniqueWithoutHabitInput = {
+    where: TrackWhereUniqueInput
+    update: XOR<TrackUpdateWithoutHabitInput, TrackUncheckedUpdateWithoutHabitInput>
+    create: XOR<TrackCreateWithoutHabitInput, TrackUncheckedCreateWithoutHabitInput>
+  }
+
+  export type TrackUpdateWithWhereUniqueWithoutHabitInput = {
+    where: TrackWhereUniqueInput
+    data: XOR<TrackUpdateWithoutHabitInput, TrackUncheckedUpdateWithoutHabitInput>
+  }
+
+  export type TrackUpdateManyWithWhereWithoutHabitInput = {
+    where: TrackScalarWhereInput
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyWithoutHabitInput>
+  }
+
+  export type HabitCreateWithoutTracksInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutHabitsInput
+  }
+
+  export type HabitUncheckedCreateWithoutTracksInput = {
+    id?: string
+    name: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type HabitCreateOrConnectWithoutTracksInput = {
+    where: HabitWhereUniqueInput
+    create: XOR<HabitCreateWithoutTracksInput, HabitUncheckedCreateWithoutTracksInput>
+  }
+
+  export type UserCreateWithoutTracksInput = {
+    id?: string
+    name?: string | null
+    email: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    habits?: HabitCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTracksInput = {
+    id?: string
+    name?: string | null
+    email: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    habits?: HabitUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutTracksInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTracksInput, UserUncheckedCreateWithoutTracksInput>
+  }
+
+  export type HabitUpsertWithoutTracksInput = {
+    update: XOR<HabitUpdateWithoutTracksInput, HabitUncheckedUpdateWithoutTracksInput>
+    create: XOR<HabitCreateWithoutTracksInput, HabitUncheckedCreateWithoutTracksInput>
+    where?: HabitWhereInput
+  }
+
+  export type HabitUpdateToOneWithWhereWithoutTracksInput = {
+    where?: HabitWhereInput
+    data: XOR<HabitUpdateWithoutTracksInput, HabitUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type HabitUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutHabitsNestedInput
+  }
+
+  export type HabitUncheckedUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutTracksInput = {
+    update: XOR<UserUpdateWithoutTracksInput, UserUncheckedUpdateWithoutTracksInput>
+    create: XOR<UserCreateWithoutTracksInput, UserUncheckedCreateWithoutTracksInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTracksInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTracksInput, UserUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type UserUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    habits?: HabitUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    habits?: HabitUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -7106,6 +10327,18 @@ export namespace Prisma {
     expires: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type HabitCreateManyUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type TrackCreateManyUserInput = {
+    id?: string
+    habitId: string
+    createdAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -7172,6 +10405,68 @@ export namespace Prisma {
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HabitUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tracks?: TrackUpdateManyWithoutHabitNestedInput
+  }
+
+  export type HabitUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tracks?: TrackUncheckedUpdateManyWithoutHabitNestedInput
+  }
+
+  export type HabitUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    habit?: HabitUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type TrackUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    habitId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    habitId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackCreateManyHabitInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type TrackUpdateWithoutHabitInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type TrackUncheckedUpdateWithoutHabitInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrackUncheckedUpdateManyWithoutHabitInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
