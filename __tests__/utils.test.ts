@@ -1,9 +1,9 @@
-import { createYear, getDaysCount, isLeapYear } from "@/lib/utils"
+import { createYear, getDaysCount, getStartsAt, isLeapYear } from "@/lib/utils"
 
 describe("createYear fn", () => {
   it("create a year with 12 months", () => {
     const year = createYear(2025)
-    expect(year.title).toBe(2025)
+    expect(year.title).toBe("2025")
     expect(year.months.length).toBe(12)
   })
   it("first month to be january", () => {
@@ -80,5 +80,20 @@ describe("getDaysCount fn", () => {
   })
   it("returns 30 for november 2025", () => {
     expect(getDaysCount(10, 2025)).toBe(30)
+  })
+})
+
+describe("getStartsAt fn", () => {
+  it("returns 2 for january 2025", () => {
+    expect(getStartsAt(0, 2025)).toBe(2)
+  })
+  it("returns 5 for february 2025", () => {
+    expect(getStartsAt(1, 2025)).toBe(5)
+  })
+  it("returns 6 for jun 2025", () => {
+    expect(getStartsAt(5, 2025)).toBe(6)
+  })
+  it("returns 3 for march 2001", () => {
+    expect(getStartsAt(2, 2001)).toBe(3)
   })
 })

@@ -6,10 +6,11 @@ export function createYear(initialYear: number) {
   }
 
   const year = {
-    title: initialYear,
+    title: initialYear.toString(),
     months: initialMonths.map((month, index) => ({
       title: month,
       daysCount: getDaysCount(index, initialYear),
+      startsAt: getStartsAt(index, initialYear),
     })),
   }
 
@@ -28,19 +29,25 @@ export function isLeapYear(year: number) {
   return divisibleBy4 && (!divisibleBy100 || (divisibleBy100 && divisibleBy400))
 }
 
-export function getDaysCount(index: number, year: number) {
+export function getDaysCount(monthIndex: number, year: number) {
   const leap = isLeapYear(year)
 
-  if (index === 1 && leap) {
+  if (monthIndex === 1 && leap) {
     return 29
-  } else if (index === 1) {
+  } else if (monthIndex === 1) {
     return 28
   } else if (
-    (index < 7 && index % 2 === 0) ||
-    (index >= 7 && index % 2 === 1)
+    (monthIndex < 7 && monthIndex % 2 === 0) ||
+    (monthIndex >= 7 && monthIndex % 2 === 1)
   ) {
     return 31
   } else {
     return 30
   }
+}
+
+export function getStartsAt(monthIndex: number, year: number) {
+  return new Date(
+    `${(monthIndex + 1).toString().padStart(2, "0")}-01-${year}`
+  ).getUTCDay()
 }
