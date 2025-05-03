@@ -1,0 +1,46 @@
+import { months as initialMonths } from "@/lib/constants"
+
+export function createYear(initialYear: number) {
+  if (typeof initialYear !== "number") {
+    throw new Error("Initial year must be a valid number")
+  }
+
+  const year = {
+    title: initialYear,
+    months: initialMonths.map((month, index) => ({
+      title: month,
+      daysCount: getDaysCount(index, initialYear),
+    })),
+  }
+
+  return year
+}
+
+export function isLeapYear(year: number) {
+  if (typeof year !== "number") {
+    throw new Error("Initial year must be a valid number")
+  }
+
+  const divisibleBy4 = year % 4 === 0
+  const divisibleBy100 = year % 100 === 0
+  const divisibleBy400 = year % 400 === 0
+
+  return divisibleBy4 && (!divisibleBy100 || (divisibleBy100 && divisibleBy400))
+}
+
+export function getDaysCount(index: number, year: number) {
+  const leap = isLeapYear(year)
+
+  if (index === 1 && leap) {
+    return 29
+  } else if (index === 1) {
+    return 28
+  } else if (
+    (index < 7 && index % 2 === 0) ||
+    (index >= 7 && index % 2 === 1)
+  ) {
+    return 31
+  } else {
+    return 30
+  }
+}
