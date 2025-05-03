@@ -209,11 +209,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://nel:BbKd973@localhost:5432/track_db_dev?schema=public"
+        "value": null
       }
     }
   },
