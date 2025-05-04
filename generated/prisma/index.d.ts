@@ -8463,6 +8463,7 @@ export namespace Prisma {
 
   export type TrackWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    userId_habitId_createdAt?: TrackUserIdHabitIdCreatedAtCompoundUniqueInput
     AND?: TrackWhereInput | TrackWhereInput[]
     OR?: TrackWhereInput[]
     NOT?: TrackWhereInput | TrackWhereInput[]
@@ -8471,7 +8472,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Track"> | Date | string
     habit?: XOR<HabitScalarRelationFilter, HabitWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "userId_habitId_createdAt">
 
   export type TrackOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9241,6 +9242,12 @@ export namespace Prisma {
   export type HabitScalarRelationFilter = {
     is?: HabitWhereInput
     isNot?: HabitWhereInput
+  }
+
+  export type TrackUserIdHabitIdCreatedAtCompoundUniqueInput = {
+    userId: string
+    habitId: string
+    createdAt: Date | string
   }
 
   export type TrackCountOrderByAggregateInput = {

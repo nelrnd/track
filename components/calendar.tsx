@@ -1,9 +1,17 @@
+import { Track } from "@/generated/prisma"
 import { Year } from "@/lib/types"
 
-export default function Calendar({ year }: { year: Year }) {
+export default function Calendar({
+  year,
+  tracks,
+}: {
+  year: Year
+  tracks: Track[]
+}) {
   return (
     <div className="max-w-[300px] m-auto mt-8 space-y-8">
       <h2>{year.title}</h2>
+      <p>{tracks.length}</p>
 
       {year.months.map((month, index) => (
         <div key={index}>

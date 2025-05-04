@@ -2,15 +2,17 @@ import Calendar from "@/components/calendar"
 import HabitList from "@/components/habit-list"
 import Navbar from "@/components/navbar"
 import SignIn from "@/components/sign-in"
+import { fetchTracks } from "@/lib/data"
 import { createYear } from "@/lib/utils"
 
 const year = createYear(2025)
 
-export default function Home() {
+export default async function Home() {
+  const tracks = await fetchTracks()
   return (
     <main className="max-w-[600px] m-auto my-8">
       <HabitList />
-      <Calendar year={year} />
+      <Calendar year={year} tracks={tracks} />
     </main>
   )
 }
