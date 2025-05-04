@@ -51,3 +51,10 @@ export function getStartsAt(monthIndex: number, year: number) {
     `${(monthIndex + 1).toString().padStart(2, "0")}-01-${year}`
   ).getUTCDay()
 }
+
+export function isToday(date: Date) {
+  return (
+    date.toString() ===
+    new Date(new Date().toISOString().split("T")[0]).toString()
+  )
+}

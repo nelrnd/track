@@ -11,7 +11,10 @@ export async function fetchUser() {
 
 export async function fetchHabits() {
   const { id } = await fetchUser()
-  const habits = await prisma.habit.findMany({ where: { userId: id } })
+  const habits = await prisma.habit.findMany({
+    where: { userId: id },
+    include: { tracks: { orderBy: { createdAt: "desc" }, take: 1 } },
+  })
   return habits
 }
 
