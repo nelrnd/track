@@ -1,8 +1,11 @@
+import { auth } from "@/auth"
 import Calendar from "@/components/calendar"
 import HabitList from "@/components/habit-list"
 import { fetchHabits, fetchTracks } from "@/lib/data"
 
 export default async function Home() {
+  const session = await auth()
+  if (!session?.user) return null
   const [habits, tracks] = await Promise.all([fetchHabits(), fetchTracks()])
   return (
     <main className="w-dvh h-dvh">
