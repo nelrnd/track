@@ -4,7 +4,7 @@ import { createHabit } from "@/lib/actions"
 import { useActionState } from "react"
 
 export default function HabitForm() {
-  const [state, action, pending] = useActionState(createHabit, undefined)
+  const [, action, pending] = useActionState(createHabit, undefined)
 
   return (
     <form action={action} className="space-y-4">
@@ -20,7 +20,8 @@ export default function HabitForm() {
 
       <button
         type="submit"
-        className="h-[35px] flex justify-center items-center px-4 py-2 border border-gray-700 rounded hover:bg-gray-700/20 cursor-pointer transition-colors"
+        disabled={pending}
+        className="h-[35px] flex justify-center items-center px-4 py-2 border border-gray-700 rounded hover:bg-gray-700/20 cursor-pointer transition-colors disabled:opacity-50"
       >
         Create
       </button>
