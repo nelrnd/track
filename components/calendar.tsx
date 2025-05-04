@@ -26,7 +26,10 @@ export default function Calendar({
   }, [])
 
   return (
-    <div className="absolute inset-0 overflow-y-scroll m-auto no-scrollbar">
+    <div
+      className="absolute inset-0 overflow-y-scroll m-auto no-scrollbar"
+      suppressHydrationWarning
+    >
       <div className="fixed bottom-4 left-4 p-4 border border-gray-700">
         <button onClick={() => scrollTodayIntoView("smooth")}>Today</button>
       </div>
