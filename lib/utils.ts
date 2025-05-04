@@ -1,4 +1,5 @@
 import { months as initialMonths } from "@/lib/constants"
+import { Year } from "./types"
 
 export function createYear(initialYear: number) {
   if (typeof initialYear !== "number") {
@@ -15,6 +16,18 @@ export function createYear(initialYear: number) {
   }
 
   return year
+}
+
+export function createCalendarTimeline(): Year[] {
+  const currentYear = new Date().getUTCFullYear()
+  const years = [currentYear]
+  for (let i = 0; i < 5; i++) {
+    years.unshift(years[0] - 1)
+  }
+  for (let i = 0; i < 5; i++) {
+    years.push(years[years.length - 1] + 1)
+  }
+  return years.map((year) => createYear(year))
 }
 
 export function isLeapYear(year: number) {

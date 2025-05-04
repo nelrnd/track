@@ -8,9 +8,9 @@ const year = createYear(2025)
 export default async function Home() {
   const [habits, tracks] = await Promise.all([fetchHabits(), fetchTracks()])
   return (
-    <main className="max-w-[600px] m-auto my-8">
+    <main className="w-dvh h-dvh">
       <HabitList habits={habits} />
-      <Calendar year={year} habits={habits} tracks={tracks} />
+      <Calendar habits={habits} tracks={tracks} />
     </main>
   )
 }

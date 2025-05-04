@@ -7,8 +7,8 @@ export default async function Navbar() {
   const session = await auth()
 
   return (
-    <nav className="px-4">
-      <ul className="max-w-[600px] m-auto border-b border-gray-700 py-8 flex items-center gap-4">
+    <nav className="fixed z-50 top-0 w-full px-4">
+      <ul className="max-w-[600px] m-auto bg-background/50 backdrop-blur-xl p-4 mt-4 rounded-lg border border-gray-700 flex items-center gap-4">
         <li className="mr-auto">
           <Link href="/" className="font-bold">
             TRACK

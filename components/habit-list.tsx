@@ -8,7 +8,7 @@ export default async function HabitList({
   habits: HabitsWithLastTrack[]
 }) {
   return (
-    <div>
+    <div className="fixed top-40 left-4 z-20">
       <h2 className="font-bold mb-2">Habits</h2>
       <ul>
         {habits.map((habit) => {
