@@ -4,7 +4,7 @@ import { prisma } from "@/prisma"
 export async function fetchUser() {
   const session = await auth()
   if (!session?.user) {
-    throw new Error("User must be logged in")
+    throw new Error("User is not logged in")
   }
   return { ...session.user }
 }

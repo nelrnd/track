@@ -1,8 +1,10 @@
+"use client"
+
 import { DeleteHabitButton, TrackButton } from "./buttons"
 import { isToday } from "@/lib/utils"
 import { HabitsWithLastTrack } from "@/lib/types"
 
-export default async function HabitList({
+export default function HabitList({
   habits,
 }: {
   habits: HabitsWithLastTrack[]
