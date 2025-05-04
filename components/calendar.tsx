@@ -1,7 +1,10 @@
+"use client"
+
 import { Habit, Track } from "@/generated/prisma"
 import { Year } from "@/lib/types"
 import { formatDateYMD } from "@/lib/utils"
 import clsx from "clsx"
+import { useRef } from "react"
 
 export default function Calendar({
   year,
@@ -12,6 +15,7 @@ export default function Calendar({
   habits: Habit[]
   tracks: Track[]
 }) {
+  const elem = useRef<HTMLDivElement>(null)
   const date = new Date()
   const today = {
     year: date.getUTCFullYear(),
@@ -20,10 +24,17 @@ export default function Calendar({
   }
   const todayThisYear = parseInt(year.title) === today.year
 
+  function scrollTodayToView() {
+    if (!elem.current) return
+
+    elem.current.scrollIntoView({ block: "center" })
+  }
+
   return (
     <div className="max-w-[300px] m-auto mt-8 space-y-8">
       <h2>{year.title}</h2>
       <p>{tracks.length}</p>
+      <button onClick={scrollTodayToView}>Today</button>
 
       {year.months.map((month, monthIndex) => {
         const todayThisMonth = todayThisYear && today.month === monthIndex
@@ -60,8 +71,11 @@ export default function Calendar({
                     !!filteredHabits.length &&
                     mappedTracks.length === filteredHabits.length
 
+                  const refProp = todayThisDay ? { ref: elem } : {}
+
                   return (
                     <div
+                      {...refProp}
                       key={index}
                       className={clsx(
                         "w-full aspect-square rounded grid place-content-center text-xs text-gray-300",

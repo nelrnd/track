@@ -20,6 +20,22 @@ export async function createHabit(
   return "done"
 }
 
+export async function deleteHabit(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  const { id } = await fetchUser()
+  if (!id) return "User must be logged in"
+  const habitId = formData.get("habitId") as string
+  if (!habitId) return "Habit id is required"
+  const habit = await prisma.habit.findFirst({ where: { id: habitId } })
+  if (!habit) return "Habit not found"
+  if (habit.userId !== id) return "Unauthorized: habit is not from user"
+  await prisma.habit.delete({ where: { id: habitId } })
+  revalidatePath("/")
+  return "Habit deleted"
+}
+
 export async function createTrack(habitId: string) {
   const { id } = await fetchUser()
   const today = new Date(new Date().toISOString().split("T")[0])

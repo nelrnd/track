@@ -1,4 +1,4 @@
-import { TrackButton } from "./buttons"
+import { DeleteHabitButton, TrackButton } from "./buttons"
 import { isToday } from "@/lib/utils"
 import { HabitsWithLastTrack } from "@/lib/types"
 
@@ -18,6 +18,7 @@ export default async function HabitList({
             <li key={habit.id} className="list-disc flex items-center gap-3">
               <h3>{habit.name}</h3>
               <TrackButton habitId={habit.id} tracked={tracked} />
+              <DeleteHabitButton habitId={habit.id} />
             </li>
           )
         })}
