@@ -1,16 +1,16 @@
 import Calendar from "@/components/calendar"
 import HabitList from "@/components/habit-list"
-import { fetchTracks } from "@/lib/data"
+import { fetchHabits, fetchTracks } from "@/lib/data"
 import { createYear } from "@/lib/utils"
 
 const year = createYear(2025)
 
 export default async function Home() {
-  const tracks = await fetchTracks()
+  const [habits, tracks] = await Promise.all([fetchHabits(), fetchTracks()])
   return (
     <main className="max-w-[600px] m-auto my-8">
-      <HabitList />
-      <Calendar year={year} tracks={tracks} />
+      <HabitList habits={habits} />
+      <Calendar year={year} habits={habits} tracks={tracks} />
     </main>
   )
 }

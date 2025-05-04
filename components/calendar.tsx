@@ -1,12 +1,15 @@
-import { Track } from "@/generated/prisma"
+import { Habit, Track } from "@/generated/prisma"
 import { Year } from "@/lib/types"
+import { formatDateYMD } from "@/lib/utils"
 import clsx from "clsx"
 
 export default function Calendar({
   year,
+  habits,
   tracks,
 }: {
   year: Year
+  habits: Habit[]
   tracks: Track[]
 }) {
   const date = new Date()
@@ -22,10 +25,10 @@ export default function Calendar({
       <h2>{year.title}</h2>
       <p>{tracks.length}</p>
 
-      {year.months.map((month, index) => {
-        const todayThisMonth = todayThisYear && today.month === index
+      {year.months.map((month, monthIndex) => {
+        const todayThisMonth = todayThisYear && today.month === monthIndex
         return (
-          <div key={index}>
+          <div key={monthIndex}>
             <h3 className="capitalize mb-4">{month.title}</h3>
             <div className="grid grid-cols-7 gap-3">
               {[...Array(month.startsAt).keys()].map((filler) => (
@@ -35,13 +38,39 @@ export default function Calendar({
                 .map((day) => day + 1)
                 .map((day, index) => {
                   const todayThisDay = todayThisMonth && today.day === day
+
+                  const date = `${year.title}-${(monthIndex + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`
+
+                  const filteredHabits = habits.filter(
+                    (habit) =>
+                      habit.createdAt.toISOString().split("T")[0] <= date
+                  )
+
+                  const mappedTracks = filteredHabits
+                    .map((habit) =>
+                      tracks.find(
+                        (track) =>
+                          track.habitId === habit.id &&
+                          track.createdAt.toISOString().split("T")[0] === date
+                      )
+                    )
+                    .filter((track) => !!track)
+
+                  const validated =
+                    !!filteredHabits.length &&
+                    mappedTracks.length === filteredHabits.length
+
                   return (
                     <div
                       key={index}
-                      className={clsx("w-full aspect-square rounded", {
-                        "border border-gray-700": !todayThisDay,
-                        "border-2 border-white": todayThisDay,
-                      })}
+                      className={clsx(
+                        "w-full aspect-square rounded grid place-content-center text-xs text-gray-300",
+                        {
+                          "border border-gray-700": !todayThisDay,
+                          "border-2 border-white": todayThisDay,
+                          "bg-green-500": validated,
+                        }
+                      )}
                     ></div>
                   )
                 })}

@@ -58,3 +58,7 @@ export function isToday(date: Date) {
     new Date(new Date().toISOString().split("T")[0]).toString()
   )
 }
+
+export function formatDateYMD(date: Date) {
+  return date.toISOString().split("T")[0]
+}
